@@ -11,7 +11,7 @@ def picker(dir):
     :rtype: str
     '''
     ROOT_DIR = Path(__file__).parent.parent
-    OUTPUT_FILE = os.path.join(ROOT_DIR, 'stdout.out') 
+    OUTPUT_FILE = os.path.join(ROOT_DIR, 'stdout.txt') 
     cmd = f"start /wait cmd /c \"fd . {dir} | fzf --query .svg$ >{OUTPUT_FILE}\""
     subprocess.run(cmd, shell=True)
     # Open the file contained path to the selected file.
