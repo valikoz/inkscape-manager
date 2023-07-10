@@ -6,7 +6,7 @@ from loguru import logger
 
 from _inkscape import launcher, export_pdf_latex
 
-# https://stackoverflow.com/questions/32923451
+
 class Watcher:
     def __init__(self, figure_path):
         self.observer = Observer()
@@ -30,7 +30,7 @@ class Watcher:
                 break
         self.observer.join()
 
-# https://stackoverflow.com/questions/11883336/detect-file-creation-with-watchdog
+
 class Handler(PatternMatchingEventHandler):
     def __init__(self, figure_path):
         self.figure_path = figure_path
