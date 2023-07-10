@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 import click
-import pyperclip
 from shutil import copy
 from loguru import logger
 
@@ -28,7 +27,7 @@ def create(title, root):
     First argument is the title of the figure.
     Second argument is the figure directory.
     """
-    title = title.strip().replace(' ', '-').lower()
+    # title = title.strip().replace(' ', '-').lower()
     root = Path(root).absolute()
     if not root.exists():
         root.mkdir()
@@ -41,15 +40,6 @@ def create(title, root):
 
     TEMPLATE = Path(__file__).parent.parent / 'config' / 'template.svg'
     copy(str(TEMPLATE), str(figure_path))
-    # Copy the LaTeX code to include the file to the clipboard
-    env = '\n'.join((
-            r"\begin{figure}[H]",
-            r"   \centering",
-            rf"  \incfig{{{title}}}",
-            r"   \caption{}",
-            rf"  \label{{fig:{title}}}",
-            r"\end{figure}"))
-    pyperclip.copy(env)
     # Open Inkscape and monitor file
     watcher = Watcher(figure_path)
     watcher.run()
