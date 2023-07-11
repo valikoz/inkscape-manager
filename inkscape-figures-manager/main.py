@@ -27,7 +27,7 @@ def create(title, root):
     First argument is the title of the figure.
     Second argument is the figure directory.
     """
-    # title = title.strip().replace(' ', '-').lower()
+    title = title.strip()
     root = Path(root).absolute()
     if not root.exists():
         root.mkdir()
