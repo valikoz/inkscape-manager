@@ -34,8 +34,8 @@ def create(title, root):
 
     figure_path = root / (title + '.svg')
     if figure_path.exists():
-        logger.debug(f'''Name `{title}` already exists.
-                     Create a new name and try again.''')
+        logger.debug('Name {name} already exists.\n'
+                     'Create a new one and try again.', name=title)
         return
 
     TEMPLATE = Path(__file__).parent.parent / 'config' / 'template.svg'
